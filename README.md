@@ -2,8 +2,10 @@
 
 DEPLOYED
 
-RinkeBy:
+RinkeBy (demo setup): 0x39fe7e16220A4DBD9CCAc92cCF95e2164f831aFf 
+
 Ropsten:
+
 Mainnet:
 
 FUNCTIONAL SPECIFICATION
