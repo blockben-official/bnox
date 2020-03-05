@@ -3,14 +3,17 @@
 		"addBNOXAdmin(address)": {
 			"notice": "Adding an account as a BNOX admin"
 		},
+		"addKYCAdmin(address)": {
+			"notice": "Adding an account as a KYC admin"
+		},
 		"addTreasuryAdmin(address)": {
 			"notice": "Adding an account as a Treasury admin"
 		},
 		"approve(address,uint256)": {
 			"notice": "approve BNOX token to be moved with tranferFrom, only if not paused"
 		},
-		"burnFrom(address,uint256)": {
-			"notice": "burning BNOX token from a given account, only if not paused"
+		"burn(uint256)": {
+			"notice": "burning BNOX token from the treasury account, only if not paused"
 		},
 		"constructor": "Constructor: creating initial supply and setting one admin",
 		"decreaseAllowance(address,uint256)": {
@@ -28,6 +31,9 @@
 		"isBNOXAdmin(address)": {
 			"notice": "Checking if the address is a BNOX admin"
 		},
+		"isKYCAdmin(address)": {
+			"notice": "Checking if the address is a KYC admin"
+		},
 		"isTreasuryAdmin(address)": {
 			"notice": "Checking if the address is a Treasury admin"
 		},
@@ -42,6 +48,9 @@
 		},
 		"removeBNOXAdmin(address)": {
 			"notice": "Removing an account as a BNOX admin"
+		},
+		"removeKYCAdmin(address)": {
+			"notice": "Removing an account as a KYC admin"
 		},
 		"removeTreasuryAdmin(address)": {
 			"notice": "Removing an account as a Treasury admin"

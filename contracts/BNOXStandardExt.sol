@@ -67,14 +67,12 @@ contract BNOXStandardExt is BNOXAdminExt, ERC20 {
         return true;
     }
 
-    /// @notice burning BNOX token from a given account, only if not paused
+    /// @notice burning BNOX token from the treasury account, only if not paused
     /// @dev ...
-    /// @param account The address of the account to be burned
     /// @param amount The amount of token to be burned
-    function burnFrom(address account, uint256 amount) public onlyTreasuryAdmin whenNotPaused {
-        require(getSourceAccountWL(account) == true, "Account is locked by the source account whitelist");
-        require(treasuryAddress == account, "Burn is possible only from the treasuryAddress");
-        _burnFrom(account, amount);
+    function burn(uint256 amount) public onlyTreasuryAdmin whenNotPaused {
+        require(getSourceAccountWL(treasuryAddress) == true, "Treasury address is locked by the source account whitelist");
+        _burnFrom(treasuryAddress, amount);
     }
 
     /// @notice killing the contract, only paused contract can be killed by the admin

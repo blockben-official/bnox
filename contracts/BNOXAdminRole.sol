@@ -18,6 +18,9 @@ contract BNOXAdminRole is Context {
     /// @notice list (mapping) of Treasury admins can only min or burn
     Roles.Role private _TreasuryAdmins;
 
+    /// @notice list (mapping) of KYC admins can only whitelist and blacklist addresses
+    Roles.Role private _KYCAdmins;
+
     /// @notice Event for Admin addedd
     event BNOXAdminAdded(address indexed account);
     /// @notice Event for Admin removed
@@ -26,11 +29,16 @@ contract BNOXAdminRole is Context {
     event BNOXTreasuryAdminAdded(address indexed account);
     /// @notice Event for rmoving treasury admin
     event BNOXTreasuryAdminRemoved(address indexed account);
+    /// @notice Event for adding KYC admin
+    event BNOXKYCAdminAdded(address indexed account);
+    /// @notice Event for rmoving KYC admin
+    event BNOXKYCAdminRemoved(address indexed account);
 
     // constructor setting the superadmin and adding deployer as admin
     constructor (address superadmin) internal {
         _superadmin = superadmin;
-        _addBNOXAdmin(_msgSender());
+        _BNOXAdmins.add(_msgSender());
+        emit BNOXAdminAdded(_msgSender());
     }
 
     /// @notice Modifyer checking if the caller is a BNOX admin
@@ -39,10 +47,24 @@ contract BNOXAdminRole is Context {
         _;
     }
 
-    /// @notice Modifyer checking if the caller is a Treasury
+    /// @notice Modifyer checking if the caller is a Treasury admin
     modifier onlyTreasuryAdmin() {
         require(isTreasuryAdmin(_msgSender()), "Treasury admin: caller does not have the TreasuryAdmin role");
         _;
+    }
+
+    /// @notice Modifyer checking if the caller is a KYC admin
+    modifier onlyKYCAdmin() {
+        require(isKYCAdmin(_msgSender()), "KYC admin: caller does not have the KYCAdmin role");
+        _;
+    }
+
+    /// @notice Checking if the address is a KYC admin
+    /// @dev ...
+    /// @param account The address of the account to be checked
+    /// @return true if the account is a KYC admin
+    function isKYCAdmin(address account) public view returns (bool) {
+        return _KYCAdmins.has(account);
     }
 
     /// @notice Checking if the address is a Treasury admin
@@ -65,28 +87,14 @@ contract BNOXAdminRole is Context {
     /// @dev ...
     /// @param account The address of the account to be added
     function addBNOXAdmin(address account) public onlyBNOXAdmin {
-        _addBNOXAdmin(account);
+        _BNOXAdmins.add(account);
+        emit BNOXAdminAdded(account);
     }
 
     /// @notice Removing an account as a BNOX admin
     /// @dev ...
     /// @param account The address of the account to be added
     function removeBNOXAdmin(address account) public onlyBNOXAdmin {
-        _removeBNOXAdmin(account);
-    }
-
-    /// @notice adding an account as a BNOX admin internal
-    /// @dev ...
-    /// @param account The address of the account to be added
-    function _addBNOXAdmin(address account) internal {
-        _BNOXAdmins.add(account);
-        emit BNOXAdminAdded(account);
-    }
-
-    /// @notice Removing an account as a BNOX admin internal
-    /// @dev ...
-    /// @param account The address of the account to be removed
-    function _removeBNOXAdmin(address account) internal {
         _BNOXAdmins.remove(account);
         emit BNOXAdminRemoved(account);
     }
@@ -95,30 +103,32 @@ contract BNOXAdminRole is Context {
     /// @dev ...
     /// @param account The address of the account to be added
     function addTreasuryAdmin(address account) public onlyBNOXAdmin {
-        _addTreasuryAdmin(account);
+        _TreasuryAdmins.add(account);
+        emit BNOXTreasuryAdminAdded(account);
     }
 
     /// @notice Removing an account as a Treasury admin
     /// @dev ...
     /// @param account The address of the account to be removed
     function removeTreasuryAdmin(address account) public onlyBNOXAdmin {
-        _removeTreasuryAdmin(account);
-    }
-
-    /// @notice adding an account as a Treasury admin internal
-    /// @dev ...
-    /// @param account The address of the account to be added
-    function _addTreasuryAdmin(address account) internal {
-        _TreasuryAdmins.add(account);
-        emit BNOXTreasuryAdminAdded(account);
-    }
-
-    /// @notice Removing an account as a BNOX admin internal
-    /// @dev ...
-    /// @param account The address of the account to be removed
-    function _removeTreasuryAdmin(address account) internal {
         _TreasuryAdmins.remove(account);
         emit BNOXTreasuryAdminRemoved(account);
+    }
+
+    /// @notice Adding an account as a KYC admin
+    /// @dev ...
+    /// @param account The address of the account to be added
+    function addKYCAdmin(address account) public onlyBNOXAdmin {
+        _KYCAdmins.add(account);
+        emit BNOXKYCAdminAdded(account);
+    }
+
+    /// @notice Removing an account as a KYC admin
+    /// @dev ...
+    /// @param account The address of the account to be removed
+    function removeKYCAdmin(address account) public onlyBNOXAdmin {
+        _KYCAdmins.remove(account);
+        emit BNOXKYCAdminRemoved(account);
     }
 
 }

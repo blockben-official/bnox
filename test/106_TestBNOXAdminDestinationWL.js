@@ -9,7 +9,7 @@ contract('BNOXToken', function(accounts) {
             return BNOXTokenContractInstance.getDestinationAccountWL(accounts[0], {from: accounts[9]});             
         }).then(function(result) {
             isWhitelisted = result;
-            assert.equal(isWhitelisted, true, "Initial token admin is not destionation account whitelisted"); 
+            assert.equal(isWhitelisted, false, "Initial token admin is not destionation account whitelisted"); 
         }); 
     });
 });

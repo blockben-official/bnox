@@ -7,6 +7,8 @@ contract('BNOXToken', function(accounts) {
     it("155. test of BNOXToken: Set source lock", function() {
         return BNOXTokenContract.deployed().then(function(instance) {
             BNOXTokenContractInstance = instance;
+            return BNOXTokenContractInstance.addKYCAdmin(accounts[0], {from: accounts[0]});             
+        }).then(function(result) {
             return BNOXTokenContractInstance.getSourceAccountWL(accounts[1], {from: accounts[0]});             
         }).then(function(result) {
             LockValue1 = result; 

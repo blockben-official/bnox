@@ -6,22 +6,22 @@ import "../contracts/BNOXToken.sol";
 
 contract TestBNOXPauseUnPause {
 
-  function test015Pause() public {
+  function test017Pause() public {
 
     address superAdmin = address(0xd6417e40ff10479CF3Fd14b395D0058827a693Fd);
 
-    BNOXToken bnox = new BNOXToken(100000000,superAdmin);
+    BNOXToken bnox = new BNOXToken(superAdmin);
 
     bnox.pause();
 
     Assert.equal(bnox.paused(), true, "The contract must be paused");
   }
 
-  function test016UnPause() public {
+  function test018UnPause() public {
 
     address superAdmin = address(0xd6417e40ff10479CF3Fd14b395D0058827a693Fd);
 
-    BNOXToken bnox = new BNOXToken(100000000,superAdmin);
+    BNOXToken bnox = new BNOXToken(superAdmin);
 
     bnox.pause();
 

@@ -9,7 +9,7 @@ contract('BNOXToken', function(accounts) {
             return BNOXTokenContractInstance.totalSupply({from: accounts[0]});             
         }).then(function(result) {
             InitialSupply = result;
-            assert.equal(InitialSupply, 100000000, "Initial total supply is not ok");  
+            assert.equal(InitialSupply, 0, "Initial total supply is not ok");  
         }); 
     });
 });

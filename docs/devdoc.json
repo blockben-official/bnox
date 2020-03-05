@@ -7,6 +7,12 @@
 				"account": "The address of the account to be added"
 			}
 		},
+		"addKYCAdmin(address)": {
+			"details": "...",
+			"params": {
+				"account": "The address of the account to be added"
+			}
+		},
 		"addTreasuryAdmin(address)": {
 			"details": "...",
 			"params": {
@@ -26,17 +32,16 @@
 		"balanceOf(address)": {
 			"details": "See {IERC20-balanceOf}."
 		},
-		"burnFrom(address,uint256)": {
+		"burn(uint256)": {
 			"details": "...",
 			"params": {
-				"account": "The address of the account to be burned",
 				"amount": "The amount of token to be burned"
 			}
 		},
 		"constructor": {
 			"details": "Not working with decimal numbers",
 			"params": {
-				"initialSupply": "The inital supply for the token"
+				"superadmin": "superadmnin of the token"
 			}
 		},
 		"decimals()": {
@@ -75,6 +80,13 @@
 			},
 			"return": "true if the account is an admin"
 		},
+		"isKYCAdmin(address)": {
+			"details": "...",
+			"params": {
+				"account": "The address of the account to be checked"
+			},
+			"return": "true if the account is a KYC admin"
+		},
 		"isTreasuryAdmin(address)": {
 			"details": "...",
 			"params": {
@@ -106,6 +118,12 @@
 			"details": "...",
 			"params": {
 				"account": "The address of the account to be added"
+			}
+		},
+		"removeKYCAdmin(address)": {
+			"details": "...",
+			"params": {
+				"account": "The address of the account to be removed"
 			}
 		},
 		"removeTreasuryAdmin(address)": {

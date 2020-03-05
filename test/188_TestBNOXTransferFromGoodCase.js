@@ -8,7 +8,17 @@ contract('BNOXToken', function(accounts) {
     it("188. test of BNOXToken: TransferFrom - Good Case", function() {
         return BNOXTokenContract.deployed().then(function(instance) {
             BNOXTokenContractInstance = instance;
+            return BNOXTokenContractInstance.addKYCAdmin(accounts[0], {from: accounts[0]});             
+        }).then(function(result) {
+            return BNOXTokenContractInstance.setDestinationAccountWL(accounts[0],true, {from: accounts[0]});             
+        }).then(function(result) {
+            return BNOXTokenContractInstance.addTreasuryAdmin(accounts[0], {from: accounts[0]});             
+        }).then(function(result) {
+            return BNOXTokenContractInstance.mint(accounts[0], 500000, {from: accounts[0]});             
+        }).then(function(result) {
             return BNOXTokenContractInstance.setFeeAddress(accounts[5], {from: accounts[0]});             
+        }).then(function(result) {
+            return BNOXTokenContractInstance.setSourceAccountWL(accounts[0],true, {from: accounts[0]});             
         }).then(function(result) {
             return BNOXTokenContractInstance.setBsopoolAddress(accounts[6], {from: accounts[0]});             
         }).then(function(result) {
@@ -31,7 +41,7 @@ contract('BNOXToken', function(accounts) {
             return BNOXTokenContractInstance.balanceOf.call(accounts[1]);             
         }).then(function(balance) {
             toBalance = balance.toNumber();
-            assert.equal(fromBalance, 99500000, "BNOX token allocation after transfer - from balance");            
+            assert.equal(fromBalance, 0, "BNOX token allocation after transfer - from balance");            
             assert.equal(toBalance, 500000, "BNOX token allocation after transfer - to balance");                        
             assert.equal(event, "Transfer", "Transfer event not raised");                                    
         });

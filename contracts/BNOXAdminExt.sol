@@ -83,7 +83,7 @@ contract BNOXAdminExt is BNOXAdminRole {
     /// @notice setting if an address is locked as a source address
     /// @dev ...
     /// @param sourceAddress The address of the account to be checked
-    function setSourceAccountWL(address sourceAddress, bool lockValue) public onlyBNOXAdmin {
+    function setSourceAccountWL(address sourceAddress, bool lockValue) public onlyKYCAdmin {
         _sourceAccountWL[sourceAddress] = lockValue;
         emit BNOXSourceAccountWL(sourceAddress, lockValue);
     }
@@ -91,7 +91,7 @@ contract BNOXAdminExt is BNOXAdminRole {
     /// @notice setting if an address is locked as a destination address
     /// @dev ...
     /// @param destinationAddress The address of the account to be checked
-    function setDestinationAccountWL(address destinationAddress, bool lockValue) public onlyBNOXAdmin {
+    function setDestinationAccountWL(address destinationAddress, bool lockValue) public onlyKYCAdmin {
         _destinationAccountWL[destinationAddress] = lockValue;
         emit BNOXDestinationAccountWL(destinationAddress, lockValue);
     }

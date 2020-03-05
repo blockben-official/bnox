@@ -6,11 +6,13 @@ import "../contracts/BNOXToken.sol";
 
 contract TestBNOXSetWhitelist {
 
-  function test023SourceAccountWhitelisting() public {
+  function test025SourceAccountWhitelisting() public {
 
     address superAdmin = address(0xd6417e40ff10479CF3Fd14b395D0058827a693Fd);
 
-    BNOXToken bnox = new BNOXToken(100000000,superAdmin);
+    BNOXToken bnox = new BNOXToken(superAdmin);
+
+    bnox.addKYCAdmin(address(this));
 
     address addressToWhitelist = 0xB9751d5cD0740Fa35D54542f11dB7a9fcAe2cf80;
 
@@ -20,11 +22,13 @@ contract TestBNOXSetWhitelist {
 
   }
 
-  function test024DestinationAccountWhitelisting() public {
+  function test026DestinationAccountWhitelisting() public {
 
     address superAdmin = address(0xd6417e40ff10479CF3Fd14b395D0058827a693Fd);
 
-    BNOXToken bnox = new BNOXToken(100000000,superAdmin);
+    BNOXToken bnox = new BNOXToken(superAdmin);
+
+    bnox.addKYCAdmin(address(this));
 
     address addressToWhitelist = 0xB9751d5cD0740Fa35D54542f11dB7a9fcAe2cf80;
 

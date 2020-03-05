@@ -9,7 +9,7 @@ contract('BNOXToken', function(accounts) {
             return BNOXTokenContractInstance.balanceOf(accounts[0], {from: accounts[0]});             
         }).then(function(result) {
             BalanceInitiator = result;
-            assert.equal(BalanceInitiator, 100000000, "Initial balance of the initiator not ok"); 
+            assert.equal(BalanceInitiator, 0, "Initial balance of the initiator not ok"); 
         }); 
     });
 });

@@ -1,14 +1,12 @@
 # BNOX token 
 
-DEPLOYED
+Deployed on:
 
-RinkeBy (early demo setup without KYC): 0x39fe7e16220A4DBD9CCAc92cCF95e2164f831aFf 
-
+RinkeBy:
 Ropsten:
+Live:
 
-Mainnet:
-
-FUNCTIONAL SPECIFICATION
+Functional specification
 
 General requirements:
 - ERC20 compatible token
@@ -65,9 +63,3 @@ Error scenarios and key compromise protocols:
 - if all the administrator accounts are compromised, there is a last level of key recovery protocol: a superadmin wired at the initialization, only available on a paperwallet.  
 - if only a treasury admin is compromised it can be rechanged by a BNOX admin
 - if only a KYC admin is compromised it can be rechanged by a BNOX admin
-
-QA
-
-Test coverage:
-
-

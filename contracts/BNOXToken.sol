@@ -11,11 +11,8 @@ contract BNOXToken is BNOXStandardExt, ERC20Detailed {
 
     /// @notice Constructor: creating initial supply and setting one admin
     /// @dev Not working with decimal numbers
-    /// @param initialSupply The inital supply for the token
-    constructor(uint256 initialSupply, address superadmin) BNOXStandardExt(superadmin) ERC20Detailed("BNOX Gold", "BNOX", 2) public {
-        setDestinationAccountWL(msg.sender, true);
-        setSourceAccountWL(msg.sender, true);
-        _mint(msg.sender, initialSupply);
+    /// @param superadmin superadmnin of the token
+    constructor(address superadmin) BNOXStandardExt(superadmin) ERC20Detailed("BlockNoteX", "BNOX", 2) public {
     }
 }
 

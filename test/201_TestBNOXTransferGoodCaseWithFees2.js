@@ -10,6 +10,16 @@ contract('BNOXToken', function(accounts) {
     it("201. test of BNOXToken: Transfer - Good Case with fees 2", function() {
         return BNOXTokenContract.deployed().then(function(instance) {
             BNOXTokenContractInstance = instance;
+            return BNOXTokenContractInstance.addTreasuryAdmin(accounts[0], {from: accounts[0]});             
+        }).then(function(result) {
+            return BNOXTokenContractInstance.addKYCAdmin(accounts[0], {from: accounts[0]});             
+        }).then(function(result) {
+            return BNOXTokenContractInstance.setDestinationAccountWL(accounts[0],true, {from: accounts[0]});             
+        }).then(function(result) {
+            return BNOXTokenContractInstance.setSourceAccountWL(accounts[0],true, {from: accounts[0]});             
+        }).then(function(result) {
+            return BNOXTokenContractInstance.mint(accounts[0], 50000000, {from: accounts[0]});             
+        }).then(function(result) {
             return BNOXTokenContractInstance.setTreasuryAddress(accounts[9], {from: accounts[0]});             
         }).then(function(result) {
             return BNOXTokenContractInstance.setGeneralFee(66, {from: accounts[0]});             
@@ -41,7 +51,7 @@ contract('BNOXToken', function(accounts) {
             return BNOXTokenContractInstance.balanceOf.call(accounts[1]);             
         }).then(function(balance) {
             toBalance = balance.toNumber();
-            assert.equal(fromBalance, 99000000, "BNOX token allocation after transfer - from balance");            
+            assert.equal(fromBalance, 49000000, "BNOX token allocation after transfer - from balance");            
             assert.equal(toBalance, 998340, "BNOX token allocation after transfer - to balance");                        
             assert.equal(feeBalance, 660, "BNOX token allocation after transfer - general Fee balance");                        
             assert.equal(bsoBalance, 1000, "BNOX token allocation after transfer - bspo Fee balance");                        

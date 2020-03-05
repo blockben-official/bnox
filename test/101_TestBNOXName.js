@@ -9,7 +9,7 @@ contract('BNOXToken', function(accounts) {
             return BNOXTokenContractInstance.name({from: accounts[0]});             
         }).then(function(result) {
             TokenName = result;
-            assert.equal(TokenName, "BNOX Gold", "Tokenname is not ok");  
+            assert.equal(TokenName, "BlockNoteX", "Tokenname is not ok");  
         }); 
     });
 });

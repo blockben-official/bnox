@@ -9,7 +9,7 @@ contract('BNOXToken', function(accounts) {
             return BNOXTokenContractInstance.getSourceAccountWL(accounts[0], {from: accounts[0]});             
         }).then(function(result) {
             isWhitelisted = result;
-            assert.equal(isWhitelisted, true, "Initial token admin is not source account whitelisted"); 
+            assert.equal(isWhitelisted, false, "Initial token admin is not source account whitelisted"); 
         }); 
     });
 });

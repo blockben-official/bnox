@@ -9,15 +9,15 @@ contract TestBNOXTokenInitialParameters {
   function test001TokenName() public {
     BNOXToken bnox = BNOXToken(DeployedAddresses.BNOXToken());
 
-    string memory tokenName = "BNOX Gold";
+    string memory tokenName = "BlockNoteX";
 
-    Assert.equal(bnox.name(), tokenName, "Token name must be BNOX Gold");
+    Assert.equal(bnox.name(), tokenName, "Token name must be NlockNoteX");
   }
 
   function test002InitialSupply() public {
     BNOXToken bnox = BNOXToken(DeployedAddresses.BNOXToken());
 
-    uint initialTokenSuppy = 100000000;
+    uint initialTokenSuppy = 0;
 
     Assert.equal(bnox.totalSupply(), initialTokenSuppy, "Initial token supply must be 100000000");
   }
@@ -33,7 +33,7 @@ contract TestBNOXTokenInitialParameters {
   function test004InitialTokenAllocation() public {
     BNOXToken bnox = BNOXToken(DeployedAddresses.BNOXToken());
 
-    uint expectedTokenSupply = 100000000;
+    uint expectedTokenSupply = 0;
 
     Assert.equal(bnox.balanceOf(tx.origin), expectedTokenSupply, "Owner should have 100000000 BNOX initially");
   }
@@ -49,7 +49,7 @@ contract TestBNOXTokenInitialParameters {
   function test006AdminDestinationWL() public {
     BNOXToken bnox = BNOXToken(DeployedAddresses.BNOXToken());
 
-    bool expected = true;
+    bool expected = false;
 
     Assert.equal(bnox.getDestinationAccountWL(tx.origin), expected, "Install address must be destination whitelisted");
   }
@@ -57,7 +57,7 @@ contract TestBNOXTokenInitialParameters {
   function test007AdminSourceWL() public {
     BNOXToken bnox = BNOXToken(DeployedAddresses.BNOXToken());
 
-    bool expected = true;
+    bool expected = false;
 
     Assert.equal(bnox.getSourceAccountWL(tx.origin), expected, "Install address must be source whitelisted");
   }

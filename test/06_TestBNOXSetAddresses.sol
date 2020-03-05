@@ -6,11 +6,11 @@ import "../contracts/BNOXToken.sol";
 
 contract TestBNOXSetAddresses {
 
-  function test017SetTreasuryAddress() public {
+  function test019SetTreasuryAddress() public {
 
     address superAdmin = address(0xd6417e40ff10479CF3Fd14b395D0058827a693Fd);
 
-    BNOXToken bnox = new BNOXToken(100000000,superAdmin);
+    BNOXToken bnox = new BNOXToken(superAdmin);
 
     address newTreasuryAddress = 0xB9751d5cD0740Fa35D54542f11dB7a9fcAe2cf80;
 
@@ -19,11 +19,11 @@ contract TestBNOXSetAddresses {
     Assert.equal(bnox.treasuryAddress(), newTreasuryAddress, "Treasury address does not match");
   }
 
-  function test018SetGeneralFeeAddress() public {
+  function test020SetGeneralFeeAddress() public {
 
     address superAdmin = address(0xd6417e40ff10479CF3Fd14b395D0058827a693Fd);
 
-    BNOXToken bnox = new BNOXToken(100000000,superAdmin);
+    BNOXToken bnox = new BNOXToken(superAdmin);
 
     address newFeeAddress = 0xB9751d5cD0740Fa35D54542f11dB7a9fcAe2cf80;
 
@@ -32,11 +32,11 @@ contract TestBNOXSetAddresses {
     Assert.equal(bnox.feeAddress(), newFeeAddress, "Fee address does not match");
   }
 
-  function test019SetBsoAddress() public {
+  function test021SetBsoAddress() public {
 
     address superAdmin = address(0xd6417e40ff10479CF3Fd14b395D0058827a693Fd);
 
-    BNOXToken bnox = new BNOXToken(100000000,superAdmin);
+    BNOXToken bnox = new BNOXToken(superAdmin);
 
     address newBsopoolAddress = 0xB9751d5cD0740Fa35D54542f11dB7a9fcAe2cf80;
 

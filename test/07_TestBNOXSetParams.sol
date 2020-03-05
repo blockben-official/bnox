@@ -6,11 +6,11 @@ import "../contracts/BNOXToken.sol";
 
 contract TestBNOXSetParams {
 
-  function test020SetUrl() public {
+  function test022SetUrl() public {
 
     address superAdmin = address(0xd6417e40ff10479CF3Fd14b395D0058827a693Fd);
 
-    BNOXToken bnox = new BNOXToken(100000000,superAdmin);
+    BNOXToken bnox = new BNOXToken(superAdmin);
 
     string memory newUrl = "http://xxx.x";
 
@@ -20,11 +20,11 @@ contract TestBNOXSetParams {
   }
 
 
-  function test021SetGeneralFee() public {
+  function test023SetGeneralFee() public {
 
     address superAdmin = address(0xd6417e40ff10479CF3Fd14b395D0058827a693Fd);
 
-    BNOXToken bnox = new BNOXToken(100000000,superAdmin);
+    BNOXToken bnox = new BNOXToken(superAdmin);
 
     uint16 newGeneralFee16 = 100;
     uint256 newGeneralFee256 = newGeneralFee16;
@@ -36,11 +36,11 @@ contract TestBNOXSetParams {
     Assert.equal(resultFee256, newGeneralFee256, "General fee value does not match");
   }
 
-  function test022SetBsolFee() public {
+  function test024SetBsolFee() public {
 
     address superAdmin = address(0xd6417e40ff10479CF3Fd14b395D0058827a693Fd);
 
-    BNOXToken bnox = new BNOXToken(100000000,superAdmin);
+    BNOXToken bnox = new BNOXToken(superAdmin);
 
     uint16 newBsoFee16 = 66;
     uint256 newBsoFee256 = newBsoFee16;
