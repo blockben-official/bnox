@@ -70,4 +70,6 @@ QA
 
 Test coverage:
 
+File                  |  % Stmts | % Branch |  % Funcs |  % Lines |
 
+contracts/           |      100 |    84.62 |      100 |      100 |   

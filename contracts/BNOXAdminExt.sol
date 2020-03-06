@@ -62,7 +62,7 @@ contract BNOXAdminExt is BNOXAdminRole {
 
     /// @notice Modifier only if not paused
     modifier whenNotPaused() {
-        require(!paused, "Pausable: paused");
+        require(!paused, "The token is paused!");
         _;
     }
 
