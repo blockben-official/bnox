@@ -15,7 +15,7 @@ contract BNOXAdminRole is Context {
     /// @notice list (mapping) of BNOX admins
     Roles.Role private _BNOXAdmins;
 
-    /// @notice list (mapping) of Treasury admins can only min or burn
+    /// @notice list (mapping) of Treasury admins can only mint or burn
     Roles.Role private _TreasuryAdmins;
 
     /// @notice list (mapping) of KYC admins can only whitelist and blacklist addresses

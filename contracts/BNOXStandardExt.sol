@@ -111,7 +111,6 @@ contract BNOXStandardExt is BNOXAdminExt, ERC20 {
         else {
 
             // three decimal in percent
-            // uint256 decimalCorrection = 100000; ORIGINAL
             // The decimalcorrection is 100.000, but to avoid rounding errors, first use 10.000 and
             // where we use decimalCorrection the calculation must add 5 and divide 10 at the and
             uint256 decimalCorrection = 10000;
@@ -123,11 +122,9 @@ contract BNOXStandardExt is BNOXAdminExt, ERC20 {
 
             uint256 totalFee = generalFee256.add(bsoFee256);
 
-            // uint256 amountTotal = amount.mul(totalFee).div(decimalCorrection); ORIGINAL
             // To avoid rounding errors add 5 and then div by 10. Read comment at decimalCorrection
             uint256 amountTotal = amount.mul(totalFee).div(decimalCorrection).add(5).div(10);
 
-            // uint256 amountBso = amount.mul(bsoFee256).div(decimalCorrection) ORIGINAL
             // To avoid rounding errors add 5 and then div by 10. Read comment at decimalCorrection
             uint256 amountBso = amount.mul(bsoFee256).div(decimalCorrection).add(5).div(10);
 
