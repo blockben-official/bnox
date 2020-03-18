@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity 0.5.16;
 
 import "@openzeppelin/contracts/GSN/Context.sol";
 import "@openzeppelin/contracts/access/Roles.sol";
@@ -10,16 +10,16 @@ contract BNOXAdminRole is Context {
     using Roles for Roles.Role;
 
     /// @notice superadmin on paper wallet for worst case key compromise
-    address private _superadmin;
+    address _superadmin;
 
     /// @notice list (mapping) of BNOX admins
-    Roles.Role private _BNOXAdmins;
+    Roles.Role _BNOXAdmins;
 
     /// @notice list (mapping) of Treasury admins can only mint or burn
-    Roles.Role private _TreasuryAdmins;
+    Roles.Role _TreasuryAdmins;
 
     /// @notice list (mapping) of KYC admins can only whitelist and blacklist addresses
-    Roles.Role private _KYCAdmins;
+    Roles.Role _KYCAdmins;
 
     /// @notice Event for Admin addedd
     event BNOXAdminAdded(address indexed account);
@@ -86,7 +86,7 @@ contract BNOXAdminRole is Context {
     /// @notice Adding an account as a BNOX admin
     /// @dev ...
     /// @param account The address of the account to be added
-    function addBNOXAdmin(address account) public onlyBNOXAdmin {
+    function addBNOXAdmin(address account) external onlyBNOXAdmin {
         _BNOXAdmins.add(account);
         emit BNOXAdminAdded(account);
     }
@@ -94,7 +94,7 @@ contract BNOXAdminRole is Context {
     /// @notice Removing an account as a BNOX admin
     /// @dev ...
     /// @param account The address of the account to be added
-    function removeBNOXAdmin(address account) public onlyBNOXAdmin {
+    function removeBNOXAdmin(address account) external onlyBNOXAdmin {
         _BNOXAdmins.remove(account);
         emit BNOXAdminRemoved(account);
     }
@@ -102,7 +102,7 @@ contract BNOXAdminRole is Context {
     /// @notice Adding an account as a Treasury admin
     /// @dev ...
     /// @param account The address of the account to be added
-    function addTreasuryAdmin(address account) public onlyBNOXAdmin {
+    function addTreasuryAdmin(address account) external onlyBNOXAdmin {
         _TreasuryAdmins.add(account);
         emit BNOXTreasuryAdminAdded(account);
     }
@@ -110,7 +110,7 @@ contract BNOXAdminRole is Context {
     /// @notice Removing an account as a Treasury admin
     /// @dev ...
     /// @param account The address of the account to be removed
-    function removeTreasuryAdmin(address account) public onlyBNOXAdmin {
+    function removeTreasuryAdmin(address account) external onlyBNOXAdmin {
         _TreasuryAdmins.remove(account);
         emit BNOXTreasuryAdminRemoved(account);
     }
@@ -118,7 +118,7 @@ contract BNOXAdminRole is Context {
     /// @notice Adding an account as a KYC admin
     /// @dev ...
     /// @param account The address of the account to be added
-    function addKYCAdmin(address account) public onlyBNOXAdmin {
+    function addKYCAdmin(address account) external onlyBNOXAdmin {
         _KYCAdmins.add(account);
         emit BNOXKYCAdminAdded(account);
     }
@@ -126,7 +126,7 @@ contract BNOXAdminRole is Context {
     /// @notice Removing an account as a KYC admin
     /// @dev ...
     /// @param account The address of the account to be removed
-    function removeKYCAdmin(address account) public onlyBNOXAdmin {
+    function removeKYCAdmin(address account) external onlyBNOXAdmin {
         _KYCAdmins.remove(account);
         emit BNOXKYCAdminRemoved(account);
     }

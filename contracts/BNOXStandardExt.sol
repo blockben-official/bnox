@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity 0.5.16;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Roles.sol";
@@ -37,6 +37,7 @@ contract BNOXStandardExt is BNOXAdminExt, ERC20 {
     /// @param spender The address to be approved
     /// @param value The amount of token to be allowed to be transferred
     function approve(address spender, uint256 value) public whenNotPaused returns (bool) {
+        require((value == 0) || (allowance(msg.sender, spender) == 0), "approve must be set to zero first");
         return super.approve(spender, value);
     }
 
@@ -62,7 +63,7 @@ contract BNOXStandardExt is BNOXAdminExt, ERC20 {
     /// @param account The address of the account to be minted
     /// @param amount The amount of token to be minted
     /// @return true if everything is cool
-    function mint(address account, uint256 amount) public onlyTreasuryAdmin whenNotPaused returns (bool) {
+    function mint(address account, uint256 amount) external onlyTreasuryAdmin whenNotPaused returns (bool) {
         _mint(account, amount);
         return true;
     }
@@ -70,7 +71,7 @@ contract BNOXStandardExt is BNOXAdminExt, ERC20 {
     /// @notice burning BNOX token from the treasury account, only if not paused
     /// @dev ...
     /// @param amount The amount of token to be burned
-    function burn(uint256 amount) public onlyTreasuryAdmin whenNotPaused {
+    function burn(uint256 amount) external onlyTreasuryAdmin whenNotPaused {
         require(getSourceAccountWL(treasuryAddress) == true, "Treasury address is locked by the source account whitelist");
         _burnFrom(treasuryAddress, amount);
     }
@@ -78,7 +79,7 @@ contract BNOXStandardExt is BNOXAdminExt, ERC20 {
     /// @notice killing the contract, only paused contract can be killed by the admin
     /// @dev ...
     /// @param toChashOut The address where the ether of the token should be sent
-    function kill(address payable toChashOut) public onlyBNOXAdmin {
+    function kill(address payable toChashOut) external onlyBNOXAdmin {
         require (paused == true, "only paused contract can be killed");
         selfdestruct(toChashOut);
     }

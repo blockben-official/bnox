@@ -15,6 +15,7 @@ General requirements:
 - with extra standard functionalities: mint and burn
 - two decimal points
 - tokensymbol BNOX
+- approve function is modified to prevent known front-running attacks: at creating new approve, the allowance has to be set to zero first! 
 
 Specialities in basic functions:
 - There are two black / whitelists controlling if a token can be transferred, minted or burned. 

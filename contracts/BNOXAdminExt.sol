@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity 0.5.16;
 
 import "./BNOXAdminRole.sol";
 
@@ -8,10 +8,10 @@ import "./BNOXAdminRole.sol";
 contract BNOXAdminExt is BNOXAdminRole {
 
     /// @notice administrating locks for the source contracts
-    mapping(address => bool) private _sourceAccountWL;
+    mapping(address => bool) _sourceAccountWL;
 
     /// @notice administrating locks for the destination contracts
-    mapping(address => bool) private _destinationAccountWL;
+    mapping(address => bool) _destinationAccountWL;
 
     /// @notice url for external verification
     string public url;
@@ -83,7 +83,7 @@ contract BNOXAdminExt is BNOXAdminRole {
     /// @notice setting if an address is locked as a source address
     /// @dev ...
     /// @param sourceAddress The address of the account to be checked
-    function setSourceAccountWL(address sourceAddress, bool lockValue) public onlyKYCAdmin {
+    function setSourceAccountWL(address sourceAddress, bool lockValue) external onlyKYCAdmin {
         _sourceAccountWL[sourceAddress] = lockValue;
         emit BNOXSourceAccountWL(sourceAddress, lockValue);
     }
@@ -91,7 +91,7 @@ contract BNOXAdminExt is BNOXAdminRole {
     /// @notice setting if an address is locked as a destination address
     /// @dev ...
     /// @param destinationAddress The address of the account to be checked
-    function setDestinationAccountWL(address destinationAddress, bool lockValue) public onlyKYCAdmin {
+    function setDestinationAccountWL(address destinationAddress, bool lockValue) external onlyKYCAdmin {
         _destinationAccountWL[destinationAddress] = lockValue;
         emit BNOXDestinationAccountWL(destinationAddress, lockValue);
     }
@@ -99,7 +99,7 @@ contract BNOXAdminExt is BNOXAdminRole {
     /// @notice setting the url referring to the documentation
     /// @dev ...
     /// @param newUrl The new url
-    function setUrl(string memory newUrl) public onlyBNOXAdmin {
+    function setUrl(string calldata newUrl) external onlyBNOXAdmin {
         url = newUrl;
         emit BNOXUrlSet(newUrl);
     }
@@ -107,7 +107,7 @@ contract BNOXAdminExt is BNOXAdminRole {
     /// @notice setting a new address for treasuryAddress
     /// @dev ...
     /// @param newAddress The new address to set
-    function setTreasuryAddress(address newAddress) public onlyBNOXAdmin {
+    function setTreasuryAddress(address newAddress) external onlyBNOXAdmin {
         treasuryAddress = newAddress;
         emit BNOXTreasuryAddressChange(newAddress);
     }
@@ -115,7 +115,7 @@ contract BNOXAdminExt is BNOXAdminRole {
     /// @notice setting a new address for feeAddress
     /// @dev ...
     /// @param newAddress The new address to set
-    function setFeeAddress(address newAddress) public onlyBNOXAdmin {
+    function setFeeAddress(address newAddress) external onlyBNOXAdmin {
         feeAddress = newAddress;
         emit BNOXFeeAddressChange(newAddress);
     }
@@ -123,7 +123,7 @@ contract BNOXAdminExt is BNOXAdminRole {
     /// @notice setting a new address for feeAddress
     /// @dev ...
     /// @param newAddress The new address to set
-    function setBsopoolAddress(address newAddress) public onlyBNOXAdmin {
+    function setBsopoolAddress(address newAddress) external onlyBNOXAdmin {
         bsopoolAddress = newAddress;
         emit BNOXBSOPOOLAddressChange(newAddress);
     }
@@ -131,7 +131,7 @@ contract BNOXAdminExt is BNOXAdminRole {
     /// @notice setting a new general fee
     /// @dev ...
     /// @param newFee The new fee to set
-    function setGeneralFee(uint16 newFee) public onlyBNOXAdmin {
+    function setGeneralFee(uint16 newFee) external onlyBNOXAdmin {
         generalFee = newFee;
         emit BNOXGeneralFeeChange(newFee);
     }
@@ -139,14 +139,14 @@ contract BNOXAdminExt is BNOXAdminRole {
     /// @notice setting a new bsoFee fee
     /// @dev ...
     /// @param newFee The new fee to set
-    function setBsoFee(uint16 newFee) public onlyBNOXAdmin {
+    function setBsoFee(uint16 newFee) external onlyBNOXAdmin {
         bsoFee = newFee;
         emit BNOXBSOFeeChange(newFee);
     }
 
     /// @notice pause the contract
     /// @dev ...
-    function pause() public onlyBNOXAdmin {
+    function pause() external onlyBNOXAdmin {
         require(paused == false, "The contract is already paused");
         paused = true;
         emit BNOXPaused(_msgSender());
@@ -154,7 +154,7 @@ contract BNOXAdminExt is BNOXAdminRole {
 
     /// @notice un-pause the contract
     /// @dev ...
-    function unpause() public onlyBNOXAdmin {
+    function unpause() external onlyBNOXAdmin {
         paused = false;
         emit BNOXUnpaused(_msgSender());
     }
