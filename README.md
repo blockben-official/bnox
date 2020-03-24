@@ -4,9 +4,13 @@ DEPLOYED
 
 RinkeBy (early demo setup without KYC): 0x39fe7e16220A4DBD9CCAc92cCF95e2164f831aFf 
 
-Ropsten:
+Ropsten: 0xff01189a63a263df0a068538a168d90b94d6fd74
 
 Mainnet:
+
+AUDIT
+
+- Audit report from Kaspersky can be found in the audit folder
 
 FUNCTIONAL SPECIFICATION
 
