@@ -2,15 +2,19 @@
 
 DEPLOYED
 
+Mainnet: 0x8752bf7ad53d25a4165b9370f2becc22dd8ae838
+
+Ropsten - UAT: 0xff01189a63a263df0a068538a168d90b94d6fd74
+
+Rorspten - DEV: 0x3bE2b83026C48ECB65cCa0A6b666d08B7459Efbf
+
 RinkeBy (early demo setup without KYC Admins): 0x39fe7e16220A4DBD9CCAc92cCF95e2164f831aFf 
 
-Ropsten: 0xff01189a63a263df0a068538a168d90b94d6fd74
-
-Mainnet: 0x8752bf7ad53d25a4165b9370f2becc22dd8ae838
 
 AUDIT
 
 - Audit report from Kaspersky can be found in the audit folder
+
 
 FUNCTIONAL SPECIFICATION
 
