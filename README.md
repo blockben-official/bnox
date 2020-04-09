@@ -10,6 +10,8 @@ Rorspten - DEV: 0x3bE2b83026C48ECB65cCa0A6b666d08B7459Efbf
 
 RinkeBy (early demo setup without KYC Admins): 0x39fe7e16220A4DBD9CCAc92cCF95e2164f831aFf 
 
+LOGO:
+https://github.com/blockben-official/bnox/blob/master/0x8752bf7ad53d25a4165b9370f2becc22dd8ae838.png
 
 AUDIT
 
