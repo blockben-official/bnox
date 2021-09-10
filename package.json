@@ -1,27 +1,58 @@
 {
   "name": "bnox",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "BNOX",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "dependencies": {
-    "@openzeppelin/contracts": "^2.4.0",
-    "mocha": "^7.0.1",
-    "original-require": "^1.0.1"
-  },
-  "devDependencies": {
-    "solidity-coverage": "^0.7.1"
+    "postinstall": "npm run compile",
+    "test": "hardhat test",
+    "compile": "hardhat compile",
+    "compile:web3": "hardhat compile --config hardhat.web3.config.ts",
+    "coverage": "hardhat coverage",
+    "deploy": "hardhat run --network localhost src/scripts/deploy.ts",
+    "clean-logs": "hardhat remove-logs",
+    "deploy:prd": "npm run clean-logs && hardhat run --network localhost src/scripts/deploy.ts",
+    "verify:ropsten": "hardhat --network ropsten etherscan-verify",
+    "deploy:ropsten": "npm run clean-logs && hardhat run --network ropsten src/scripts/deploy.ts"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/blockben-official/bnox.git"
   },
-  "author": "",
-  "license": "Copyright",
   "bugs": {
     "url": "https://github.com/blockben-official/bnox/issues"
   },
-  "homepage": "https://github.com/blockben-official/bnox#readme"
+  "homepage": "https://github.com/blockben-official/bnox#readme",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.2",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "@typechain/ethers-v5": "^6.0.5",
+    "@typechain/web3-v1": "^2.2.0",
+    "@types/chai": "^4.2.21",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "^16.4.13",
+    "chai": "^4.3.4",
+    "dotenv": "^10.0.0",
+    "ethereum-waffle": "^3.4.0",
+    "hardhat": "^2.6.0",
+    "hardhat-abi-exporter": "^2.2.1",
+    "hardhat-contract-sizer": "^2.0.3",
+    "hardhat-deploy": "^0.8.11",
+    "hardhat-gas-reporter": "^1.0.4",
+    "hardhat-log-remover": "^2.0.2",
+    "hardhat-typechain": "^0.3.5",
+    "mocha": "^7.2.0",
+    "solidity-coverage": "^0.7.16",
+    "ts-generator": "^0.1.1",
+    "ts-node": "^10.2.0",
+    "typechain": "^4.0.3",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.2.0",
+    "@openzeppelin/contracts-upgradeable": "^4.2.0"
+  }
 }
