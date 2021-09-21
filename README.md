@@ -1,5 +1,11 @@
 # BNOX (BlockNoteX) token
 
+## Contract addresses
+
+- **Mainnet**: [0x8b61F7aFe322372940dc4512BE579f0a55367650](https://etherscan.io/address/0x8b61F7aFe322372940dc4512BE579f0a55367650)
+- **Ropsten (UAT)**: [0xc6FC59fe3c1D35F74B7B02ef282dbDd26147A558](https://ropsten.etherscan.io/address/0xc6FC59fe3c1D35F74B7B02ef282dbDd26147A558)
+- **Ropsten (DEV)**: [0xF570ebf973592C9fce1c2b66f1f89B82E98ECAF2](https://ropsten.etherscan.io/address/0xF570ebf973592C9fce1c2b66f1f89B82E98ECAF2)
+
 ## FUNCTIONAL SPECIFICATION
 
 ### General requirements:

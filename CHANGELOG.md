@@ -7,10 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [2.0.0] - 2021-09-10
+## [2.0.0] - 2021-09-21
 
 ### Added
 
+- README
+- CHANGELOG
+- Github action to run coverage tests as PR
+- WEB3 type generation via hardhat
+- Deployment scripts
+- .env.example for deployment scripts
+- CertiK audit
 - Hardhat framework
 - BlockNoteX.sol
   - token name, token symbol
@@ -37,11 +44,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - events for changes
   - pause/unpause
 - tests with coverage
-- README
-- CHANGELOG
-- Github action to run coverage tests as PR
-- WEB3 type generation via hardhat
 
 [unreleased]: https://github.com/blockben-official/bnox/compare/v2.0.0...HEAD
-[2.0.0]: https://github.com/blockben-official/bnox/releases/tag/v2.0.0
 [1.0.0]: https://github.com/blockben-official/bnox/releases/tag/v1.0.0
+[2.0.0]: https://github.com/blockben-official/bnox/releases/tag/v2.0.0
